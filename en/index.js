@@ -11,6 +11,7 @@ const dataMap = new Map();
       const cmd = { name: "", description: "", args: [] };
       data.commands.push(cmd);
       renderCommands();
+        validate();
     }
 
     function removeCommand(index) {

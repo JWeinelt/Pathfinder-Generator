@@ -40,12 +40,12 @@ const dataMap = new Map();
 
           <label>Argument Type:</label>
           <select onchange="data.commands[${cmdIndex}].args${getPath(parentArgs)}[${argIndex}].type=this.value; updateJSON()" class="border px-2 py-1 rounded w-full mb-2">
-            <option ${arg.type==="string"?"selected":""}>Text</option>
-            <option ${arg.type==="integer"?"selected":""}>Zahl</option>
-            <option ${arg.type==="decimal"?"selected":""}>Dezimalzahl</option>
-            <option ${arg.type==="list"?"selected":""}>Liste</option>
-            <option ${arg.type==="entity"?"selected":""}>Entitäten</option>
-            <option ${arg.type==="coordinate"?"selected":""}>Koordinate</option>
+            <option value="string" ${arg.type==="string"?"selected":""}>Text</option>
+            <option value="integer" ${arg.type==="integer"?"selected":""}>Zahl</option>
+            <option value="decimal" ${arg.type==="decimal"?"selected":""}>Dezimalzahl</option>
+            <option value="list" ${arg.type==="list"?"selected":""}>Liste</option>
+            <option value="entity" ${arg.type==="entity"?"selected":""}>Entitäten</option>
+            <option value="coordinate" ${arg.type==="coordinate"?"selected":""}>Koordinate</option>
           </select>
 
           <label>Vordefinierte Vorschläge:</label>
@@ -60,10 +60,10 @@ const dataMap = new Map();
           Using "list" needs a custom list name, which has to be linked to the Pathfinder API.<br>All suggestion types in this field are predefined. If you just want e.g. integers, select "(none)."</p>
           <select onchange="data.commands[${cmdIndex}].args${getPath(parentArgs)}[${argIndex}].suggestion_type=this.value; updateJSON()" class="border px-2 py-1 rounded w-full mb-2">
             <option value="">(keine)</option>
-            <option ${arg.suggestion_type==="list"?"selected":""}>Liste</option>
-            <option ${arg.suggestion_type==="players"?"selected":""}>Spieler</option>
-            <option ${arg.suggestion_type==="entities"?"selected":""}>Entitäten</option>
-            <option ${arg.suggestion_type==="coordinates"?"selected":""}>Koordinaten</option>
+            <option value="list" ${arg.suggestion_type==="list"?"selected":""}>Liste</option>
+            <option value="players" ${arg.suggestion_type==="players"?"selected":""}>Spieler</option>
+            <option value="entities" ${arg.suggestion_type==="entities"?"selected":""}>Entitäten</option>
+            <option value="coordinates" ${arg.suggestion_type==="coordinates"?"selected":""}>Koordinaten</option>
           </select>
 
 
