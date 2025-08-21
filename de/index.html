@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pathfinder JSON Builder</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/tokyo-night-dark.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/json.min.js"></script>
+
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" href="logo.png">
+</head>
+
+<body class="bg-gray-800">
+    <div class="p-6 flex gap-6">
+        <div class="pb-80 w-1/2 bg-gray-900 shadow rounded-xl p-4 overflow-auto">
+            <h2 class="text-xl font-bold mb-4 text-white">Generiertes JSON</h2>
+            <div class="relative w-full bg-gray-800 rounded-lg">
+                <a class="absolute top-2 right-2 text-white bg-gray-700 hover:bg-gray-600 px-2 py-1 rounded cursor-pointer"
+                onclick="copyJSON()" id="copybutton">📝 Kopieren</a>
+
+                <pre id="jsonOutput" class="text-sm text-white p-4 rounded-lg overflow-x-auto">{}</pre>
+            </div>
+        </div>
+
+        <div class="w-1/2 bg-gray-900 shadow rounded-xl p-4">
+            <h2 class="text-white text-xl font-bold mb-4">Befehle</h2>
+            <div id="commands" class="space-y-4"></div>
+            <button onclick="addCommand()" class="mt-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg">+ Befehl hinzufügen</button>
+        </div>
+    </div>
+    <hr>
+    <div class="flex gap-6 p-6">
+        <div class="pb-40 w-1/3 bg-gray-900 shadow rounded-xl p-4 overflow-auto">
+            <p class="text-xl text-white" id="probHeading">Probleme (0)</p>
+            <ul id="problems" class="text-white p-2 text-l"></ul>
+        </div>
+        <div class="w-1/3 bg-gray-900 shadow rounded-xl p-4 overflow-auto">
+            <p class="text-xl text-white">How to use this tool</p>
+            <ol class="ml-5 text-l text-white list-disc">
+                <li>With this generator you can create command mappings for the PathFinder API.</li>
+                <li>After creating all commands, just copy the json file in <code>assets/modid/pathfinder.json</code> in your modding environment.</li>
+                <li>Using basic completions is available for this method. If you want to use dynamic suggestions, you have to bind your mod to the PathFinder API.</li>
+                <li><a class="text-blue-400 underline cursor-pointer" href="https://github.com/JWeinelt/UltimateBackportMod/wiki/Pathfinder">View the API docs here.</a></li>
+            </ol>
+            <ul id="problems" class="text-white p-2 text-l"></ul>
+        </div>
+        <div class="pb-40 w-1/3 bg-gray-900 shadow rounded-xl p-4 overflow-auto">
+            <p class="text-xl text-white">Made with <span class="text-red-600 text-2xl">♥</span> by JWeinelt</p>
+            <p class="text-l text-white">Thanks to everyone using this tool! I've originally made it for my Minecraft mod <i>Ultimate Backport Mod</i> which introduces a new command suggestion UI for 1.12.2!</p>
+            
+            <p class="text-xl text-white">Legal stuff</p>
+            <a href="imprint.html" class="text-l text-blue-400 underline cursor-pointer">Imprint</a>
+            <p class="text-xl text-white">Other</p>
+            <a href="#" class="text-l text-blue-400 underline cursor-pointer">Discord</a><br>
+            <a href="../de" class="text-l text-blue-400 underline cursor-pointer">Jump to German version</a>
+        </div>
+    </div>
+    <center>
+    <p class="text-gray-200 text-xs pb-10">This website is licensed under MIT. Feel free to do anything you want with it.<br>Version: v2025.08.21<br></p></center>
+
+    <script src="index.js"></script>
+</body>
+</html>

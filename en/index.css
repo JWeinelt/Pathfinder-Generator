@@ -1,0 +1,9 @@
+.probWarn {
+    color: yellow;
+    margin-top: 4px;
+}
+
+.probErr {
+    color: red;
+    margin-top: 4px;
+}
