@@ -1,4 +1,6 @@
 let data = { commands: [] };
+const availableCustomLists = ["achievements", "players", "entities", "block", "item", "mods", ""]
+
 const dataMap = new Map();
 
     function updateJSON() {
@@ -32,10 +34,11 @@ const dataMap = new Map();
 
     function renderArgumentFields(cmdIndex, args, parentArgs) {
       return args.map((arg, argIndex) => `
-        <div class='border p-2 rounded-lg bg-gray-50 mt-2'>
+        <div class='relative border p-2 rounded-lg bg-gray-50 mt-2'>
+        <button onclick="removeArgument(${cmdIndex}, data.commands[${cmdIndex}].args${getPath(parentArgs)}, ${argIndex})" class="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded">X</button>
           <input type="text pattern="[a-zA-Z0-9_-]+" required placeholder="Argument Name" value="${arg.name}" 
             onchange="data.commands[${cmdIndex}].args${getPath(parentArgs)}[${argIndex}].name=this.value; updateJSON()"
-            class="argNameField border px-2 py-1 rounded w-full mb-2">
+            class="argNameField border px-2 py-1 rounded mb-2">
 
           <textarea placeholder="Description" onchange="data.commands[${cmdIndex}].args${getPath(parentArgs)}[${argIndex}].description=this.value; updateJSON()" class="border px-2 py-1 rounded w-full mb-2">${arg.description}</textarea>
 
@@ -70,10 +73,10 @@ const dataMap = new Map();
 
           <input type="text" placeholder="Custom List Name" value="${arg.custom_list_name}" 
             onchange="data.commands[${cmdIndex}].args${getPath(parentArgs)}[${argIndex}].custom_list_name=this.value; updateJSON()"
-            class="border px-2 py-1 rounded w-full mb-2">
+            class="customListField border px-2 py-1 rounded w-full mb-2">
 
           <button onclick="addArgument(${cmdIndex}, data.commands[${cmdIndex}].args${getPath(parentArgs)}[${argIndex}].args)" class="bg-green-500 hover:bg-green-600 text-white px-2 py-1 rounded mr-2">+ Add Sub-Arg</button>
-          <button onclick="removeArgument(${cmdIndex}, data.commands[${cmdIndex}].args${getPath(parentArgs)}, ${argIndex})" class="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded">Delete Arg</button>
+          
 
           <div class="ml-4">
             ${renderArgumentFields(cmdIndex, arg.args, [...parentArgs, argIndex])}
@@ -149,6 +152,16 @@ const dataMap = new Map();
                   }
                 })
             });
+            
+            
+            const customListFields = document.querySelectorAll('.customListField');
+            customListFields.forEach(input => {
+                input.addEventListener('input', () => {
+                    if (!availableCustomLists.includes(input.value)) {
+                        displayWarning(input, "custom-list");
+                    } else removeError(input);
+                })
+            });
         }
 
         function validateText(text, fieldType) {
@@ -167,7 +180,7 @@ const dataMap = new Map();
                 const regex2 = /^[a-z]+$/;
                 if (regex3.test(text)) return "uppercase-warn";
                 if (regex.test(text)) return "numbers-warn";
-                if (!regex2.test(text)) return "regCMD-warn";
+                if (!regex2.test(text)) return "regCMD";
                 else return "";
             }
         }
@@ -188,6 +201,8 @@ const dataMap = new Map();
                 dataMap.set(input, warn);
             } else {
                 let warn = dataMap.get(input);
+                warn.classList.remove("probWarn");
+                warn.classList.add("probErr");
                 warn.textContent = input.value.substr(0, 10) + text;
             }
             
@@ -202,6 +217,7 @@ const dataMap = new Map();
             if (type === "empty") text = ": Argument cannot be empty."
             if (type === "uppercase") text = ": Command names should not contain any uppercase letters.";
             if (type === "numbers") text = ": Command names should not contain numbers or underscores (_) or dashes (-)";
+            if (type === "custom-list") text = ": If using custom lists, you have to hook into the Pathfinder API and create them there."
             
             if (dataMap.get(input) == null) {
                 let warn = document.createElement('li');
@@ -211,6 +227,8 @@ const dataMap = new Map();
                 dataMap.set(input, warn);
             } else {
                 let warn = dataMap.get(input);
+                warn.classList.add("probWarn");
+                warn.classList.remove("probErr");
                 warn.textContent = input.value.substr(0, 10) + text;
             }
             
