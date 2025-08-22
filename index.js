@@ -357,3 +357,11 @@ function copyJSON() {
     })
     .catch(err => console.error('Failed to copy:', err));
 }
+
+// Toggle mobile menu
+const menuToggle = document.getElementById('menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+
+menuToggle.addEventListener('click', () => {
+mobileMenu.classList.toggle('hidden');
+});
