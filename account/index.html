@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pathfinder JSON Builder</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/tokyo-night-dark.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/json.min.js"></script>
+
+    <link rel="stylesheet" href="../index.css">
+    <link rel="icon" href="logo.png">
+    
+    <script src="https://kit.fontawesome.com/85182ea83e.js" crossorigin="anonymous"></script>
+    <script src="../cookies.js"></script>
+</head>
+
+<body class="bg-gray-800"><div class="p-6 flex flex-col lg:flex-row gap-6">
+    <!-- Navbar -->
+<nav class="bg-gray-900 text-white shadow-lg">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16 items-center">
+      
+      <!-- Logo -->
+      <div class="flex-shrink-0 text-xl font-bold cursor-pointer">
+        <a href="logo.png">PathFinder</a>
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex space-x-6">
+        <a href="/" class="hover:text-blue-400 transition">Generator</a>
+        <a href="#" class="hover:text-blue-400 transition">Documentation</a>
+        <a href="/download" class="hover:text-blue-400 transition">Download</a>
+        <a href="javascript:void();" id="account" class="hover:text-blue-400 transition">Login</a>
+      </div>
+
+      <!-- Mobile Hamburger -->
+      <div class="md:hidden">
+        <button id="menu-toggle" class="focus:outline-none">
+          <!-- Hamburger Icon -->
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+               xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Dropdown -->
+  <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 space-y-2">
+    <a href="#" class="block hover:text-blue-400 transition">Generator</a>
+    <a href="#" class="block hover:text-blue-400 transition">Documentation</a>
+    <a href="#" class="block hover:text-blue-400 transition">Download</a>
+    <a href="#" class="block hover:text-blue-400 transition">Login</a>
+  </div>
+</nav>
+
+  <!-- Linke Spalte -->
+  <div class="pb-80 w-full lg:w-1/2 bg-gray-900 shadow rounded-xl p-4 overflow-auto justify-center">
+    <center><h2 class="text-2xl font-bold mb-4 text-white">Your account</h2></center>
+    <p id="username" class="text-white text-l">Your username: SomeUser</p>
+    <center><h2 class="text-xl font-bold mb-4 text-white">Your namespaces</h2></center>
+      <div class="p-6">
+          
+      <div class="overflow-x-auto rounded-2xl shadow-lg">
+        <table class="min-w-full border-collapse bg-white text-left text-sm text-gray-700">
+          <thead class="bg-gradient-to-r from-blue-400 to-cyan-400 text-white">
+            <tr>
+              <th scope="col" class="px-6 py-4 font-medium">Namespace (Mod ID)</th>
+              <th scope="col" class="px-6 py-4 font-medium">Status</th>
+              <th scope="col" class="px-6 py-4 font-medium"></th>
+            </tr>
+          </thead>
+          <tbody id="namespaces-body" class="divide-y divide-gray-200">
+          </tbody>
+        </table>
+      </div>
+    </div>
+      <div class="pb-20 w-full lg:w-1/2 bg-gray-800 shadow rounded-xl p-4 overflow-auto justify-center">
+          <h3 class="mb-6 text-xl text-white">Danger zone</h3>
+          <a id="delete-account" class=" rounded-lg bg-red-600 px-3 py-1 text-xl text-white font-bold shadow hover:bg-red-500" href="javascript:void()">Delete account</a>
+          <a id="deactivate-account" class=" rounded-lg bg-red-600 px-3 py-1 text-xl text-white font-bold shadow hover:bg-red-500" href="javascript:void()">Deactivate account</a>
+      </div>
+  </div>
+
+
+
+    <center>
+    <p class="text-gray-200 text-xs pb-10">This website is licensed under MIT. Feel free to do anything you want with it.<br>Version: v2025.08.21<br></p></center>
+
+    <script src="index.js"></script>
+    </div>
+</body>
+</html>
